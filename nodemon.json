@@ -1,0 +1,8 @@
+{
+	"env": {
+		"CASSANDRA_HOST": "localhost",
+		"CASSANDRA_DATACENTER": "datacenter1",
+		"CASSANDRA_KEYSPACE": "essentials",
+		"STRIPE_KEY": "sk_test_MPocbndd8ENLgXciB3Ra6DxU00VZba84Q4"
+	}
+}
