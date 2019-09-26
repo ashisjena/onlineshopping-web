@@ -64,3 +64,39 @@ Country.findByPk(10)
 
 /* sequelize.sync().then(() => {
 }); */
+
+sequelize.query('SELECT * FROM users', {type: sequelize.QueryTypes.SELECT})
+  .then(users => {
+    // We don't need spread here, since only the results wil be returned for the select queries
+  });
+
+sequelize.query("UPDATE users SET y = 42 WHERE x = 12").then(([results, metadata]) => {
+  // Results will be an empty array and metadata will contain the number of affected rows.
+})
+
+sequelize
+  .query('SELECT * FROM projects', {
+    model: Projects,
+    mapToModel: true // pass true here if you have any mapped fields
+  })
+  .then(projects => {
+    // Each record will now be an instance of Project
+  })
+
+sequelize.query('SELECT * FROM projects WHERE status = ?',
+  { replacements: ['active'], type: sequelize.QueryTypes.SELECT }
+).then(projects => {
+  console.log(projects)
+})
+
+sequelize.query('SELECT * FROM projects WHERE status = :status ',
+  { replacements: { status: 'active' }, type: sequelize.QueryTypes.SELECT }
+).then(projects => {
+  console.log(projects)
+})
+
+sequelize.query('SELECT * FROM projects WHERE status IN(:status) ',
+  { replacements: { status: ['active', 'inactive'] }, type: sequelize.QueryTypes.SELECT }
+).then(projects => {
+  console.log(projects)
+})

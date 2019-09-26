@@ -11,9 +11,15 @@ module.exports = pool.promise(); */
 
 /* const Sequelize = require('sequelize');
 
+// database, username, password, {host, dilect, pool}
 const sequelize = new Sequelize('geo', 've', '', {
   host: 'localhost',
-  dialect: 'mysql'
+  dialect: 'mysql',
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  }
 }); */
 
 const cassandra = require('cassandra-driver');

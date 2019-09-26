@@ -104,8 +104,8 @@ app.use((error, req, res, next) => {
 
 _db
 	.cassandraConnect(() => {
-    // https.createServer({ key: privateKey, cert: certificate }, app).listen(process.env.HOST || 3000);
-    app.listen(process.env.HOST || 3000);
+    https.createServer({ key: privateKey, cert: certificate }, app).listen(process.env.HOST || 3000);
+    // app.listen(process.env.HOST || 3000);
   })
 	.catch(err => {
 		console.log(err);
